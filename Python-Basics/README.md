@@ -12,7 +12,7 @@ shown on LeetCode.
 - [x] 03. Input & Type Conversion
 - [x] 04. Strings
 - [x] 05. Operators
-- [ ] 06. If-Else (in progress)
+- [x] 06. If-Else (in progress)
 - [ ] 07. Loops
 - [ ] 08. Lists / Tuples / Dictionaries
 - [ ] 09. Functions
