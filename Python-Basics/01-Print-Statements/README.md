@@ -25,3 +25,8 @@ By completing these problems you should be able to:
 - Use print() confidently for single and multiple lines
 - Handle escape characters and quotes correctly
 - Format simple output using f-strings
+
+
+---
+
+*Author: Karthik Bhandarkar*

@@ -23,3 +23,8 @@
 By completing these problems you should be able to:
 - Create, update, and swap variables
 - Use variables to solve small real-world numeric problems
+
+
+---
+
+*Author: Karthik Bhandarkar*

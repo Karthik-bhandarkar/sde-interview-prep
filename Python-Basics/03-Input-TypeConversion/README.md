@@ -22,3 +22,8 @@
 By completing these problems you should be able to:
 - Take input from the user and convert it to the correct type
 - Use converted input inside real calculations
+
+
+---
+
+*Author: Karthik Bhandarkar*

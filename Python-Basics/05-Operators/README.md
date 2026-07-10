@@ -24,3 +24,8 @@ By completing these problems you should be able to:
 - Use all arithmetic and augmented assignment operators correctly
 - Understand operator precedence
 - Apply operators to solve real-world numeric problems
+
+
+---
+
+*Author: Karthik Bhandarkar*

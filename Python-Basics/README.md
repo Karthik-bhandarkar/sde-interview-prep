@@ -27,3 +27,8 @@ order concepts were learned, see steady daily practice, and find any concept qui
 ## Tools used
 Practiced and written in **VS Code**, then pushed here to GitHub. Problem-solving practice
 (HackerRank / GeeksforGeeks / LeetCode) will be tracked separately once fundamentals are complete.
+
+
+---
+
+*Author: Karthik Bhandarkar*

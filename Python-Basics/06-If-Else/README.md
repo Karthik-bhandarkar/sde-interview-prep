@@ -11,6 +11,8 @@ Practice problems covering conditional statements in Python — `if`, `elif`, `e
 | 03 | Voting Eligibility | [`03_voting_eligibility.py`](./03_voting_eligibility.py) | Easy | Comparison operator `>=` |
 | 04 | Largest of Two Numbers | [`04_largest_of_two.py`](./04_largest_of_two.py) | Easy | Comparison operator `>` |
 | 05 | Largest of Three Numbers | [`05_largest_of_three.py`](./05_largest_of_three.py) | Easy ⭐⭐⭐ | `and`, nested conditions |
+| 06 | Driving License Checker | [`06_driving_license_checker.py`](./06_driving_license_checker.py) | Easy ⭐⭐ | Nested `if` |
+| 07 | Bank Account Access | [`07_bank_account_access.py`](./07_bank_account_access.py) | Easy ⭐⭐⭐ | Nested `if` |
 | 08 | HackerRank - Python If-Else | [`08_hackerrank_python_if_else.py`](./08_hackerrank_python_if_else.py) | Easy | `if` / `elif` / `else`, Modulus `%` |
 | 09 | GeeksforGeeks - If Conditional Statement | [`09_gfg_if_conditional_statement.py`](./09_gfg_if_conditional_statement.py) | Easy | Boolean values, `if`, `or`, `not` |
 
@@ -98,6 +100,52 @@ elif number_3 > number_1 and number_3 > number_2:
     print(f"The largest number is {number_3}.")
 else:
     print("All three numbers are equal.")
+```
+
+---
+
+### 06. Driving License Checker
+
+Write a program to check whether a person is allowed to drive using nested `if` statements.
+
+```python
+# Ask the user to enter their age
+age = int(input("Enter your age: "))
+
+# First condition: Check if the person is 18 or older
+if age >= 18:
+
+    # Only if age is 18 or above, ask about the driving license
+    has_license = input("Do you have a driving license? (yes/no): ").lower()
+
+    # Second condition: Check if the user has a license
+    if has_license == "yes":
+        print("You are allowed to drive.")
+    else:
+        print("Apply for a driving license.")
+
+# If age is below 18
+else:
+    print("You are not eligible to drive.")
+```
+
+---
+
+### 07. Bank Account Access
+
+Allow a user to access their bank account only if all conditions (having an ATM card and correct PIN) are satisfied using nested `if` statements.
+
+```python
+card = input("Do you have an ATM card? (yes/no):").lower()
+
+if card == "yes":
+    atm_pin = int(input("Enter the PIN"))
+    if atm_pin == 1234:
+       print ("Access Granted. \n Welcome to your bank account.")
+    else:
+       print("Incorrect PIN.")
+else:
+    print("Access Denied.")
 ```
 
 ---

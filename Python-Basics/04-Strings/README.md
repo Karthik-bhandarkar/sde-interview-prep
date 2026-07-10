@@ -23,3 +23,8 @@
 By completing these problems you should be able to:
 - Store, access, and manipulate strings
 - Use indexing, slicing, and built-in string methods confidently
+
+
+---
+
+*Author: Karthik Bhandarkar*
