@@ -11,6 +11,11 @@ Practice problems covering `while` loops in Python, including counter patterns, 
 | 03 | Even Numbers | [`03_even_numbers.py`](./03_even_numbers.py) | Easy ⭐ | `while`, increment by 2 |
 | 04 | Odd Numbers | [`04_odd_numbers.py`](./04_odd_numbers.py) | Easy ⭐ | `while`, increment by 2 |
 | 05 | Sum of Numbers (Accumulator) | [`05_sum_of_numbers.py`](./05_sum_of_numbers.py) | Easy ⭐⭐ | `while`, accumulator |
+| 06 | Sum of Even Numbers | [`06_sum_of_even_numbers.py`](./06_sum_of_even_numbers.py) | Easy ⭐⭐ | `while`, accumulator, `+` |
+| 07 | Product of Numbers | [`07_product_of_numbers.py`](./07_product_of_numbers.py) | Easy ⭐⭐ | `while`, product accumulator |
+| 08 | Factorial | [`08_factorial.py`](./08_factorial.py) | Easy ⭐⭐ | `while`, product accumulator |
+| 09 | Count Even Numbers | [`09_count_even_numbers.py`](./09_count_even_numbers.py) | Easy ⭐⭐ | `while`, count accumulator, `if` |
+| 10 | Largest Number | [`10_largest_number.py`](./10_largest_number.py) | Easy ⭐⭐⭐ | `while`, comparison, `if` |
 
 ## 📝 Problem Details
 
@@ -77,6 +82,90 @@ while count <= 10:
     total += count
     count += 1
 print(total)
+```
+
+---
+
+### 06. Sum of Even Numbers
+Calculate the sum of all even numbers from 2 to 20.
+
+```python
+counter = 2
+total = 0
+
+while counter <= 20:
+    total += counter
+    counter += 2
+print(total)
+```
+
+---
+
+### 07. Product of Numbers
+Calculate the product of numbers from 1 to 5.
+
+```python
+counter = 1
+product = 1
+
+while counter <= 5:
+    product *= counter
+    counter += 1
+
+print(f"The product of numbers from 1 to 5 is: {product}")
+```
+
+---
+
+### 08. Factorial
+Calculate the factorial of a given number using a while loop.
+
+```python
+number = int(input("Enter the Number: "))
+counter = number
+product = 1
+
+while counter >= 1:
+    product *= counter
+    counter -= 1
+
+print(f"Factorial of {number} is: {product}")
+```
+
+---
+
+### 09. Count Even Numbers
+Count the total number of even numbers from 1 to a given number.
+
+```python
+number = int(input("enter the number:"))
+counter = 1
+count = 0
+
+while counter <= number:
+    if counter % 2 == 0:
+        count += 1
+    counter += 1
+
+print(count)
+```
+
+---
+
+### 10. Largest Number
+Find the largest number from 1 to a given number using a while loop.
+
+```python
+number = int(input("Enter the limit number: "))
+counter = 1
+largest = 0
+
+while counter <= number:
+    if counter > largest:
+        largest = counter
+    counter += 1
+
+print(f"The largest number from 1 to {number} is {largest}")
 ```
 
 ---
