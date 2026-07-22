@@ -16,6 +16,8 @@ Practice problems covering `while` loops in Python, including counter patterns, 
 | 08 | Factorial | [`08_factorial.py`](./08_factorial.py) | Easy ⭐⭐ | `while`, product accumulator |
 | 09 | Count Even Numbers | [`09_count_even_numbers.py`](./09_count_even_numbers.py) | Easy ⭐⭐ | `while`, count accumulator, `if` |
 | 10 | Largest Number | [`10_largest_number.py`](./10_largest_number.py) | Easy ⭐⭐⭐ | `while`, comparison, `if` |
+| 11 | Smallest Number | [`11_smallest_number.py`](./11_smallest_number.py) | Easy ⭐⭐⭐ | `while`, comparison, `if` |
+| 12 | Largest of N Numbers | [`12_largest_number.py`](./12_largest_number.py) | Medium ⭐⭐⭐⭐ | `while`, user input, comparison |
 
 ## 📝 Problem Details
 
@@ -166,6 +168,46 @@ while counter <= number:
     counter += 1
 
 print(f"The largest number from 1 to {number} is {largest}")
+```
+
+---
+
+### 11. Smallest Number
+Find the smallest number from 1 to a given number using a while loop.
+
+```python
+number = int(input("Enter The Limit Number: "))
+counter = 1
+smallest = 1
+
+while counter <= number:
+    if counter < smallest:
+        smallest = counter
+    counter += 1
+print(f"The smallest number from 1 to {number} is {smallest}")
+```
+
+---
+
+### 12. Largest of N Numbers
+Find the largest number among N user-entered numbers using a while loop.
+
+```python
+number = int(input("enter how much number u need: "))
+counter  = 1
+
+while counter <= number:
+    current_number = int(input("Enter number: "))
+    
+    if counter == 1:
+        largest  = current_number 
+
+    if current_number >= largest:
+        largest = current_number   
+    
+    counter += 1
+
+print(largest)
 ```
 
 ---
