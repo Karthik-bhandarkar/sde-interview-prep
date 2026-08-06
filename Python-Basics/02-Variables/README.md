@@ -1,168 +1,180 @@
-# 02 - Variables
+# Variables & Data Types
 
-Practice problems covering variable initialization, dynamic typing, variable swapping, value updates, and practical mathematical applications. Part of the [SDE Interview Prep](https://github.com/Karthik-bhandarkar/sde-interview-prep) series under `Python-Basics`.
-
-## 📋 Problems
-
-| # | Problem | File | Difficulty | Concepts |
-|---|---------|------|------------|----------|
-| 01 | Store Name | [`01_store_name.py`](./01_store_name.py) | Easy | String variable assignment |
-| 02 | Store Age | [`02_store_age.py`](./02_store_age.py) | Easy | Integer variable assignment |
-| 03 | Multiple Variables | [`03_multiple_variables.py`](./03_multiple_variables.py) | Easy | Multiple assignment on one line |
-| 04 | Swap Variables | [`04_swap_variables.py`](./04_swap_variables.py) | Easy ⭐ | Tuple unpacking `a, b = b, a` |
-| 05 | Update Variable | [`05_update_variable.py`](./05_update_variable.py) | Easy | Re-assigning variable values |
-| 06 | Student Information | [`06_student_information.py`](./06_student_information.py) | Easy | Mixed data types (str, int, float, bool) |
-| 07 | Employee Details | [`07_employee_details.py`](./07_employee_details.py) | Easy | Variable composition & output formatting |
-| 08 | Calculate Birth Year | [`08_calculate_birth_year.py`](./08_calculate_birth_year.py) | Easy | Arithmetic with variables |
-| 09 | Simple Interest | [`09_simple_interest.py`](./09_simple_interest.py) | Easy | Formula evaluation `(P * R * T) / 100` |
-| 10 | Area of Rectangle | [`10_area_of_rectangle.py`](./10_area_of_rectangle.py) | Easy | Formula evaluation `length * width` |
+A variable is a named container that holds a value in memory. Python creates a
+variable the moment you assign a value to it — no declaration needed. Every value
+has a data type that determines what operations are valid on it.
 
 ---
 
-## 📝 Problem Details
+## What is it?
 
-### 01. Store Name
-Store a string in a variable and display it.
+A variable binds a name to an object in memory using the `=` operator. Python is
+dynamically typed — the type is determined at runtime by the value assigned, not by
+the programmer.
+
+---
+
+## Why do we use it?
+
+- Store and reuse values without hardcoding them repeatedly.
+- Give meaningful names to data so code is readable.
+- Python's dynamic typing means one variable can hold different types across its lifetime (though this should be done deliberately).
+
+---
+
+## Syntax
 
 ```python
-name = "Karthik Bhandarkar"
-print("Name:", name)
+variable_name = value          # basic assignment
+x = y = z = 0                 # multiple targets, same value
+a, b, c = 1, 2.5, "hello"     # tuple unpacking — multiple assignment
+a, b = b, a                   # swap without a temp variable
 ```
 
 ---
 
-### 02. Store Age
-Store an integer representing age and print it.
+## Parameters
 
-```python
-age = 21
-print("Age:", age)
-```
+Variables do not have parameters — they are not functions. The `=` operator is the
+assignment operator, not a keyword argument.
 
----
-
-### 03. Multiple Variables
-Declare and assign multiple variables in a single line.
-
-```python
-x, y, z = 10, 20, 30
-print("x:", x, "y:", y, "z:", z)
-```
+| Rule | Detail |
+|---|---|
+| Starts with | Letter or underscore (`_`) |
+| Contains | Letters, digits, underscores |
+| Case-sensitive | `name` ≠ `Name` ≠ `NAME` |
+| Reserved words | Cannot use Python keywords (`if`, `for`, `class`, etc.) |
 
 ---
 
-### 04. Swap Variables
-Swap two variables without using a temporary variable using Python's tuple unpacking.
+## Return Value
 
-```python
-a = 5
-b = 10
-print("Before swap -> a:", a, ", b:", b)
-
-a, b = b, a
-print("After swap  -> a:", a, ", b:", b)
-```
+Assignment (`=`) returns no value — it is a statement, not an expression.
+(Exception: walrus operator `:=` does return a value — covered in topic 20.)
 
 ---
 
-### 05. Update Variable
-Demonstrate variable mutability by modifying its value during execution.
-
-```python
-score = 0
-print("Initial Score:", score)
-
-score = 100
-print("Updated Score:", score)
-```
-
----
-
-### 06. Student Information
-Store name, age, GPA, and enrollment status using appropriate data types.
+## Example
 
 ```python
 name = "Karthik"
 age = 21
-gpa = 3.8
-is_enrolled = True
+gpa = 8.7
+is_employed = False
 
-print("Name:", name)
-print("Age:", age)
-print("GPA:", gpa)
-print("Enrolled:", is_enrolled)
+# Multiple assignment
+x = y = z = 0
+
+# Tuple unpacking
+city, country = "Bengaluru", "India"
+
+# Swap
+a, b = 10, 20
+a, b = b, a
+
+print(name, age, gpa, is_employed)  # Karthik 21 8.7 False
+print(x, y, z)                      # 0 0 0
+print(city, country)                # Bengaluru India
+print(a, b)                         # 20 10
 ```
 
 ---
 
-### 07. Employee Details
-Store employee ID, designation, and salary, printing a formatted summary.
+## Output
+
+```
+Karthik 21 8.7 False
+0 0 0
+Bengaluru India
+20 10
+```
+
+---
+
+## Key Points
+
+- Python is **dynamically typed** — types are inferred at runtime.
+- Use `type()` to inspect a variable's type: `type(42)` → `<class 'int'>`.
+- Variable names are **case-sensitive**: `Score` and `score` are two different variables.
+- Python naming convention is **snake_case** (`first_name`, not `firstName`).
+- A variable can be **reassigned** to a completely different type — Python allows it, but avoid it for readability.
+- `del variable_name` removes the binding — accessing it after raises `NameError`.
+- Constants by convention use ALL_CAPS (`MAX_SIZE = 100`) — Python has no true constant enforcement.
+
+---
+
+## Common Mistakes
 
 ```python
-emp_id = 101
-designation = "Software Engineer"
-salary = 75000.50
+# Mistake 1 — using a reserved keyword as a name
+for = 5           # SyntaxError
+list = [1, 2, 3]  # Works, but shadows built-in list() — avoid
 
-print(f"Employee #{emp_id}: {designation} earning ${salary}")
+# Mistake 2 — mixing up = (assignment) and == (comparison)
+if x = 10:        # SyntaxError
+if x == 10:       # Correct
+
+# Mistake 3 — expecting assignment to return a value
+result = (x = 5)  # SyntaxError — use := (walrus) if you need this
+
+# Mistake 4 — unpacking mismatch
+a, b = 1, 2, 3    # ValueError: too many values to unpack
+
+# Mistake 5 — assuming global variable is accessible after del
+x = 10
+del x
+print(x)          # NameError: name 'x' is not defined
 ```
 
 ---
 
-### 08. Calculate Birth Year
-Compute birth year using current year and age variables.
+## Interview Notes
+
+- **When to use:** Always — variables are fundamental. The key interview question is usually about **scope** (local vs global) or **mutability** of the object being referenced.
+- **When NOT to name something a built-in:** Shadowing `list`, `dict`, `input`, `id`, etc. breaks their built-in behavior silently.
+- **Alternative for immutability:** Use a tuple or a named constant convention (`ALL_CAPS`) — Python doesn't enforce `const`.
+- **Memory note:** Variables in Python are references (pointers) to objects, not boxes containing values. Two variables can point to the same object (`is` checks identity, `==` checks value).
+- **Complexity:** O(1) for assignment.
+
+---
+
+## Practice Problems
+
+```
+01_store_name.py
+02_store_age.py
+03_multiple_variables.py
+04_swap_variables.py
+05_update_variable.py
+06_student_information.py
+07_employee_details.py
+08_calculate_birth_year.py
+09_simple_interest.py
+10_area_of_rectangle.py
+```
+
+---
+
+## Quick Revision
 
 ```python
-current_year = 2026
-age = 21
-birth_year = current_year - age
+# Assignment
+x = 10                     # int
+pi = 3.14                  # float
+name = "Dev"               # str
+active = True              # bool
 
-print("Birth Year:", birth_year)
+# Multi-assign
+a, b = 1, 2                # tuple unpack
+a, b = b, a                # swap
+
+# Type check
+type(x)                    # <class 'int'>
+
+# Delete
+del x                      # removes binding
+
+# Convention
+MAX_LIMIT = 100            # constant (ALL_CAPS)
+first_name = "Karthik"     # snake_case
 ```
-
----
-
-### 09. Simple Interest
-Calculate simple interest given Principal, Rate, and Time.
-
-```python
-principal = 10000
-rate = 5
-time = 2
-
-simple_interest = (principal * rate * time) / 100
-print("Simple Interest:", simple_interest)
-```
-
----
-
-### 10. Area of Rectangle
-Calculate area from length and width variables.
-
-```python
-length = 15
-width = 8
-
-area = length * width
-print("Area of Rectangle:", area)
-```
-
----
-
-## ▶️ How to Run
-
-```bash
-python 01_store_name.py
-```
-
----
-
-## 🎯 Key Takeaways
-
-- Variables act as named containers for storing data values.
-- Python is **dynamically typed**, so type annotations are optional and variable types can change at runtime.
-- Python allows simultaneous assignment (e.g. `x, y, z = 1, 2, 3`).
-- **Tuple Unpacking** (`a, b = b, a`) provides an elegant $O(1)$ swap without temporary storage.
-
----
-
-*Author: Karthik Bhandarkar*
