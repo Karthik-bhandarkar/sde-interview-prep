@@ -1,207 +1,190 @@
-# 06 - If-Else
+# If-Else (Conditional Statements)
 
-Practice problems covering conditional statements in Python — `if`, `elif`, `else`, comparison operators, and the modulus operator. Part of the [SDE Interview Prep](https://github.com/Karthik-bhandarkar/sde-interview-prep) series under `Python-Basics`.
+Conditional statements let a program choose which block of code to run based on
+whether a condition is `True` or `False`. Python uses `if`, `elif`, and `else` for
+branching, and supports ternary expressions for simple one-line decisions.
 
-## 📋 Problems
+---
 
-| # | Problem | File | Difficulty | Concepts |
-|---|---------|------|------------|----------|
-| 01 | Positive, Negative or Zero | [`01_if_else.py`](./01_if_else.py) | Easy | `if` / `elif` / `else` |
-| 02 | Even or Odd | [`02_even_or_odd.py`](./02_even_or_odd.py) | Easy | Modulus operator `%` |
-| 03 | Voting Eligibility | [`03_voting_eligibility.py`](./03_voting_eligibility.py) | Easy | Comparison operator `>=` |
-| 04 | Largest of Two Numbers | [`04_largest_of_two.py`](./04_largest_of_two.py) | Easy | Comparison operator `>` |
-| 05 | Largest of Three Numbers | [`05_largest_of_three.py`](./05_largest_of_three.py) | Easy ⭐⭐⭐ | `and`, nested conditions |
-| 06 | Driving License Checker | [`06_driving_license_checker.py`](./06_driving_license_checker.py) | Easy ⭐⭐ | Nested `if` |
-| 07 | Bank Account Access | [`07_bank_account_access.py`](./07_bank_account_access.py) | Easy ⭐⭐⭐ | Nested `if` |
-| 08 | HackerRank - Python If-Else | [`08_hackerrank_python_if_else.py`](./08_hackerrank_python_if_else.py) | Easy | `if` / `elif` / `else`, Modulus `%` |
-| 09 | GeeksforGeeks - If Conditional Statement | [`09_gfg_if_conditional_statement.py`](./09_gfg_if_conditional_statement.py) | Easy | Boolean values, `if`, `or`, `not` |
+## What is it?
 
-## 📝 Problem Details
+An `if` statement evaluates a Boolean expression. If it is truthy, the indented
+block runs. `elif` (else-if) adds additional conditions. `else` is a catch-all that
+runs when no previous condition matched. All branches are mutually exclusive —
+only the first matching block executes.
 
-### 01. Positive, Negative or Zero
+---
 
-Read an integer and print whether it is positive, negative, or zero.
+## Why do we use it?
+
+- Control which code path runs depending on runtime data (user input, API response, computed value).
+- Guard against edge cases (e.g., division by zero, invalid input).
+- Replace repetitive boolean logic with a readable decision tree.
+
+---
+
+## Syntax
 
 ```python
-number = int(input("Enter a number: "))
-
-if number > 0:
-    print("The number is positive.")
-elif number == 0:
-    print("The number is zero.")
+# Basic if-elif-else
+if condition1:
+    # runs if condition1 is True
+elif condition2:
+    # runs if condition1 is False AND condition2 is True
 else:
-    print("The number is negative.")
+    # runs if all conditions above are False
+
+# Ternary (one-liner)
+value = "even" if n % 2 == 0 else "odd"
+
+# Nested if
+if outer_condition:
+    if inner_condition:
+        # runs only when both are True
 ```
 
 ---
 
-### 02. Even or Odd
+## Parameters
 
-Check whether a number is even or odd using the modulus operator.
+`if` / `elif` accept any expression that evaluates to a truthy or falsy value:
+
+| Falsy values | Truthy values |
+|---|---|
+| `False`, `0`, `0.0` | `True`, any non-zero number |
+| `""`, `[]`, `{}`, `()`, `set()` | Any non-empty string, list, dict, etc. |
+| `None` | Any object not listed as falsy |
+
+---
+
+## Return Value
+
+`if`/`elif`/`else` are **statements**, not expressions — they produce no value.
+The **ternary expression** (`x if condition else y`) does return a value.
+
+---
+
+## Example
 
 ```python
-num = int(input("Enter a number: "))
+age = 20
 
-if num % 2 == 0:
-    print("Even")
+if age < 18:
+    print("Minor")
+elif age == 18:
+    print("Just became an adult")
 else:
-    print("Odd")
+    print("Adult")
+
+# Ternary
+label = "even" if age % 2 == 0 else "odd"
+print(f"{age} is {label}")
 ```
 
 ---
 
-### 03. Voting Eligibility
+## Output
 
-Determine if a person is eligible to vote based on age (18+).
+```
+Adult
+20 is even
+```
+
+---
+
+## Key Points
+
+- Python uses **indentation** (4 spaces) to define blocks — there are no braces.
+- `elif` is optional and can be chained as many times as needed.
+- `else` is optional — an `if` with no `else` simply does nothing when the condition is `False`.
+- Conditions can use any combination of comparison, logical, membership, and identity operators.
+- **Ternary syntax:** `x if condition else y` — useful for simple assignments, not for complex logic.
+- **Truthiness:** Non-empty containers, non-zero numbers, and non-`None` values are truthy.
+- Python evaluates `and`/`or` with short-circuiting — useful for guard patterns: `if x and x > 0`.
+
+---
+
+## Common Mistakes
 
 ```python
-age = int(input("Enter the Age of a Person: "))
+# Mistake 1 — using = instead of == in condition
+if x = 10:             # SyntaxError
+if x == 10:            # Correct
 
-if age >= 18:
-    print("Person is Eligible to Vote")
+# Mistake 2 — missing colon
+if x > 5               # SyntaxError: expected ':'
+if x > 5:              # Correct
+
+# Mistake 3 — incorrect indentation
+if x > 5:
+print("yes")           # IndentationError
+    print("yes")       # Correct
+
+# Mistake 4 — using elif after else
+if x > 5:
+    pass
 else:
-    print("Person is Not Eligible to Vote")
+    pass
+elif x == 5:           # SyntaxError — elif must come before else
+    pass
+
+# Mistake 5 — comparing to True/False explicitly (redundant)
+if is_valid == True:   # redundant
+if is_valid:           # Pythonic
 ```
 
 ---
 
-### 04. Largest of Two Numbers
+## Interview Notes
 
-Compare two numbers and print the larger one (or note if they're equal).
+- **When to use:** Any time execution depends on a condition — validation, routing, state machines.
+- **When NOT to nest deeply:** More than 2–3 levels of nesting is a sign to refactor — extract functions or use guard clauses (early return).
+- **Alternative — dictionary dispatch:** Replace long `if/elif` chains on a fixed set of keys with a dictionary:
+  ```python
+  actions = {"start": start_fn, "stop": stop_fn}
+  actions.get(command, default_fn)()
+  ```
+- **Alternative — match-case (Python 3.10+):** Cleaner than `if/elif` for matching against multiple literal values.
+- **Complexity:** O(1) per condition evaluation (each comparison runs in constant time).
+
+---
+
+## Practice Problems
+
+```
+01_if_else.py
+02_even_or_odd.py
+03_voting_eligibility.py
+04_largest_of_two.py
+05_largest_of_three.py
+06_driving_license_checker.py
+07_bank_account_access.py
+08_hackerrank_python_if_else.py
+09_gfg_if_conditional_statement.py
+```
+
+---
+
+## Quick Revision
 
 ```python
-number_1 = int(input("Enter the First Number: "))
-number_2 = int(input("Enter the Second Number: "))
-
-if number_1 > number_2:
-    print(f"The largest number is {number_1}.")
-elif number_1 == number_2:
-    print("Both numbers are equal.")
+# if / elif / else
+if x > 0:
+    print("positive")
+elif x == 0:
+    print("zero")
 else:
-    print(f"The largest number is {number_2}.")
+    print("negative")
+
+# Ternary
+result = "yes" if x > 0 else "no"
+
+# Falsy check
+if not value:           # covers None, 0, "", [], {}
+    print("empty")
+
+# Guard clause pattern
+if not condition:
+    return              # exit early, keep nesting shallow
+# main logic here
 ```
-
----
-
-### 05. Largest of Three Numbers
-
-Compare three numbers using chained `and` conditions to find the largest.
-
-```python
-number_1 = int(input("Enter the first number: "))
-number_2 = int(input("Enter the second number: "))
-number_3 = int(input("Enter the third number: "))
-
-if number_1 > number_2 and number_1 > number_3:
-    print(f"The largest number is {number_1}.")
-elif number_2 > number_1 and number_2 > number_3:
-    print(f"The largest number is {number_2}.")
-elif number_3 > number_1 and number_3 > number_2:
-    print(f"The largest number is {number_3}.")
-else:
-    print("All three numbers are equal.")
-```
-
----
-
-### 06. Driving License Checker
-
-Write a program to check whether a person is allowed to drive using nested `if` statements.
-
-```python
-# Ask the user to enter their age
-age = int(input("Enter your age: "))
-
-# First condition: Check if the person is 18 or older
-if age >= 18:
-
-    # Only if age is 18 or above, ask about the driving license
-    has_license = input("Do you have a driving license? (yes/no): ").lower()
-
-    # Second condition: Check if the user has a license
-    if has_license == "yes":
-        print("You are allowed to drive.")
-    else:
-        print("Apply for a driving license.")
-
-# If age is below 18
-else:
-    print("You are not eligible to drive.")
-```
-
----
-
-### 07. Bank Account Access
-
-Allow a user to access their bank account only if all conditions (having an ATM card and correct PIN) are satisfied using nested `if` statements.
-
-```python
-card = input("Do you have an ATM card? (yes/no):").lower()
-
-if card == "yes":
-    atm_pin = int(input("Enter the PIN"))
-    if atm_pin == 1234:
-       print ("Access Granted. \n Welcome to your bank account.")
-    else:
-       print("Incorrect PIN.")
-else:
-    print("Access Denied.")
-```
-
----
-
-### 08. HackerRank - Python If-Else
-
-Solve HackerRank's introductory **Python If-Else** challenge by applying conditional statements (`if`, `elif`, and `else`) to determine whether a number is **"Weird"** or **"Not Weird"** based on the given rules.
-
-**🔗 Problem Link:**  
-https://www.hackerrank.com/challenges/py-if-else/problem?isFullScreen=true
-
----
-
-### 09. GeeksforGeeks - If Conditional Statement
-
-Solve the GeeksforGeeks **If Conditional Statement** problem by implementing the `friends_in_trouble()` function.
-
-Two friends, **John** and **Smith**, are represented by the boolean values:
-
-- `j_angry`
-- `s_angry`
-
-Return **True** if:
-
-- Both friends are angry.
-- Neither friend is angry.
-
-Otherwise, return **False**.
-
-**🔗 Problem Link:**  
-https://www.geeksforgeeks.org/problems/if-loop-python/1
-
----
-
-## ▶️ How to Run
-
-Each file is standalone. Run any of them with:
-
-```bash
-python3 01_if_else.py
-```
-
-You'll be prompted to enter input values in the terminal.
-
----
-
-## 🎯 Key Takeaways
-
-- `if` / `elif` / `else` statements allow programs to make decisions based on conditions.
-- Conditions are evaluated from top to bottom until one evaluates to `True`.
-- The modulus operator `%` is commonly used to determine whether a number is even or odd.
-- Comparison operators (`>`, `<`, `>=`, `<=`, `==`, `!=`) are the foundation of conditional logic.
-- Logical operators (`and`, `or`, `not`) help combine multiple conditions into a single decision.
-- Always consider edge cases such as equal values when comparing numbers.
-- Practicing problems from **HackerRank** and **GeeksforGeeks** strengthens problem-solving skills and prepares you for coding interviews.
-
----
-
-*Author: Karthik Bhandarkar*
