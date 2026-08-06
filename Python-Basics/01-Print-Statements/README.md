@@ -1,150 +1,165 @@
-# 01 - Print Statements
+# Print Statements & Escape Sequences
 
-Practice problems covering basic output formatting, escape sequences, quotes, string formatting, and ASCII patterns in Python. Part of the [SDE Interview Prep](https://github.com/Karthik-bhandarkar/sde-interview-prep) series under `Python-Basics`.
-
-## 📋 Problems
-
-| # | Problem | File | Difficulty | Concepts |
-|---|---------|------|------------|----------|
-| 01 | Hello World | [`01_hello_world.py`](./01_hello_world.py) | Easy | `print()` basics |
-| 02 | Print Multiple Lines | [`02_print_multiple_lines.py`](./02_print_multiple_lines.py) | Easy | `\n` escape character |
-| 03 | Escape Characters | [`03_escape_characters.py`](./03_escape_characters.py) | Easy | `\t`, `\n`, `\\` escape sequences |
-| 04 | Quotes Inside Strings | [`04_quotes.py`](./04_quotes.py) | Easy | Single `'` and Double `"` quote escaping |
-| 05 | Print Shapes | [`05_print_shapes.py`](./05_print_shapes.py) | Easy | Multi-line output, right-angled triangle |
-| 06 | Print Personal Info | [`06_print_personal_info.py`](./06_print_personal_info.py) | Easy | Sequential `print()` statements |
-| 07 | Print Formatted Text | [`07_print_formatted_text.py`](./07_print_formatted_text.py) | Easy | f-strings string formatting |
-| 08 | Print Special Characters | [`08_print_special_characters.py`](./08_print_special_characters.py) | Easy | Special characters `@`, `#`, `$`, `%`, `&`, `*` |
-| 09 | Print Pattern | [`09_print_pattern.py`](./09_print_pattern.py) | Easy | 5x5 Square grid pattern |
-| 10 | Mini Profile Card | [`10_mini_profile.py`](./10_mini_profile.py) | Easy | ASCII text UI layout |
+Python's built-in `print()` function writes output to the console. Escape sequences
+let you embed special characters — newlines, tabs, quotes — directly inside strings.
+Together they cover every basic output task you'll encounter in interviews and scripts.
 
 ---
 
-## 📝 Problem Details
+## What is it?
 
-### 01. Hello World
-Print `"Hello, World!"` to the console.
+`print()` is a built-in function that converts its arguments to strings and writes
+them to standard output (the console by default). Escape sequences are backslash
+codes (`\n`, `\t`, etc.) that represent characters that can't be typed literally.
+
+---
+
+## Why do we use it?
+
+- Display results, debug values, and format user-facing output.
+- Escape sequences let you control layout (newlines, tabs) without extra `print()` calls.
+- Comments (`#`, `''' '''`) let you annotate code without affecting execution.
+
+---
+
+## Syntax
 
 ```python
-print("Hello, World!")
+print(*objects, sep=' ', end='\n', file=sys.stdout, flush=False)
+```
+
+```python
+# Single-line comment
+''' Multi-line
+    comment '''
 ```
 
 ---
 
-### 02. Print Multiple Lines
-Print three lines of text using a single `print()` function call.
+## Parameters
 
-```python
-print("I love Python.\nI am learning to code.\nI will build great projects.")
-```
-
----
-
-### 03. Escape Characters
-Demonstrate a tab space (`\t`), new line (`\n`), and backslash (`\\`) in a single statement.
-
-```python
-print("Name:\tKarthik\nPath:\tC:\\Users\\Karthik")
-```
+| Parameter | Default | Description |
+|-----------|---------|-------------|
+| `*objects` | — | One or more values to print; converted to strings automatically |
+| `sep` | `' '` | String inserted between values when multiple are passed |
+| `end` | `'\n'` | String appended after the last value |
+| `file` | `sys.stdout` | Output stream target |
+| `flush` | `False` | Force-flush the stream buffer immediately |
 
 ---
 
-### 04. Quotes Inside Strings
-Print a string containing both single and double quotes correctly.
+## Return Value
 
-```python
-print('He said, "Python\'s syntax is clean."')
-```
+`None` — `print()` always returns `None`. It produces a side-effect (output), not a value.
 
 ---
 
-### 05. Print Shapes
-Print a right-angled triangle of stars (5 rows) using sequential `print()` calls.
-
-```python
-print("*")
-print("**")
-print("***")
-print("****")
-print("*****")
-```
-
----
-
-### 06. Print Personal Info
-Print personal metadata (Name, Age, City, Hobby) on separate lines.
-
-```python
-print("Name: Karthik Bhandarkar")
-print("Age: 21")
-print("City: Bengaluru")
-print("Hobby: Coding")
-```
-
----
-
-### 07. Print Formatted Text
-Use f-strings to inject variable values directly into text.
+## Example
 
 ```python
 name = "Karthik"
 age = 21
-print(f"My name is {name} and I am {age} years old.")
+print(f"Name: {name}", f"Age: {age}", sep=" | ", end=".\n")
+print("Path:\tC:\\Users\\Karthik")   # \t = tab, \\ = literal backslash
+print("Line 1\nLine 2\nLine 3")       # \n = newline
 ```
 
 ---
 
-### 08. Print Special Characters
-Output special characters `@ # $ % & *` to the console.
+## Output
+
+```
+Name: Karthik | Age: 21.
+Path:	C:\Users\Karthik
+Line 1
+Line 2
+Line 3
+```
+
+---
+
+## Key Points
+
+- `print()` accepts any number of arguments — all are converted to `str` before output.
+- `sep` controls what goes **between** values; `end` controls what comes **after** the last one.
+- Escape sequences only work inside regular strings, not raw strings (`r"..."`).
+- f-strings (`f"..."`) embed expressions directly: `f"{variable}"`.
+- `#` comments are ignored by the interpreter; they never appear in output.
+- Triple-quoted strings (`'''...'''` or `"""..."""`) span multiple lines and can act as multi-line comments when unassigned.
+- `print()` with no arguments outputs a blank line (just `end`, which defaults to `\n`).
+
+---
+
+## Common Mistakes
 
 ```python
-print("Special Characters: @ # $ % & *")
+# Mistake 1 — concatenating non-strings without conversion
+age = 21
+print("Age: " + age)          # TypeError: can only concatenate str to str
+print("Age: " + str(age))     # Correct
+
+# Mistake 2 — forgetting \\ for a literal backslash
+print("C:\new_folder")        # \n is a newline — not what you want
+print("C:\\new_folder")       # Correct
+
+# Mistake 3 — mismatched quotes
+print('He said "hello"')      # OK — outer single, inner double
+print("He said "hello"")      # SyntaxError — unescaped inner doubles
+
+# Mistake 4 — sep/end are keyword-only
+print("a", "b", ", ")         # Wrong — third arg is treated as a value
+print("a", "b", sep=", ")     # Correct
 ```
 
 ---
 
-### 09. Print Pattern
-Print a 5x5 square pattern made of `#` characters.
+## Interview Notes
+
+- **When to use:** Any time you need console output — debugging, CLI tools, formatted reports.
+- **When NOT to use:** For logging in production code, use the `logging` module instead; it supports levels, file output, and timestamps.
+- **Alternative:** `sys.stdout.write()` gives lower-level control (no automatic `\n`, returns character count).
+- **f-strings vs `.format()` vs `%`:** f-strings (Python 3.6+) are the modern standard — fastest and most readable. `.format()` is compatible with older codebases. `%` formatting is legacy.
+- **Complexity:** O(n) where n = total length of all output — purely I/O bound.
+
+---
+
+## Practice Problems
+
+```
+01_hello_world.py
+02_print_multiple_lines.py
+03_escape_characters.py
+04_quotes.py
+05_print_shapes.py
+06_print_personal_info.py
+07_print_formatted_text.py
+08_print_special_characters.py
+09_print_pattern.py
+10_mini_profile.py
+```
+
+---
+
+## Quick Revision
 
 ```python
-print("#####")
-print("#####")
-print("#####")
-print("#####")
-print("#####")
+# Core syntax
+print("Hello")                        # Hello
+print("a", "b", sep="-", end="!\n")  # a-b!
+
+# Escape sequences
+\n   # newline
+\t   # tab
+\\   # backslash
+\"   # double quote inside string
+\'   # single quote inside string
+
+# f-string
+name = "Dev"
+print(f"Hi {name}")                   # Hi Dev
+
+# Comment styles
+# single-line
+''' multi
+    line '''
 ```
-
----
-
-### 10. Mini Profile Card
-Design a neat profile card using border characters (`-` and `|`).
-
-```python
-print("-----------------------------")
-print("| Name : Karthik Bhandarkar |")
-print("| Role : Python Learner     |")
-print("| Goal : Product-Based Job  |")
-print("-----------------------------")
-```
-
----
-
-## ▶️ How to Run
-
-Run any file using Python 3:
-
-```bash
-python 01_hello_world.py
-```
-
----
-
-## 🎯 Key Takeaways
-
-- `print()` is the core output function in Python.
-- Escape sequences (`\n` for newline, `\t` for tab, `\\` for backslash) enable formatted multiline text within a single string.
-- Inverting quote wrappers (e.g. single quotes wrapping double quotes) or using `\'` prevents syntax errors.
-- **f-strings** (`f"..."`) allow simple, readable dynamic string interpolation.
-
----
-
-*Author: Karthik Bhandarkar*
