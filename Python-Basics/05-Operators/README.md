@@ -1,184 +1,248 @@
-# 05 - Operators
+# Operators
 
-Practice problems covering arithmetic operators (`+`, `-`, `*`, `/`, `//`, `%`, `**`), operator precedence (PEMDAS/BODMAS), augmented assignment (`+=`, `-=`, etc.), and built-in math functions. Part of the [SDE Interview Prep](https://github.com/Karthik-bhandarkar/sde-interview-prep) series under `Python-Basics`.
-
-## 📋 Problems
-
-| # | Problem | File | Difficulty | Concepts |
-|---|---------|------|------------|----------|
-| 01 | Addition | [`01_addition.py`](./01_addition.py) | Easy | Addition operator `+` |
-| 02 | Arithmetic Operations | [`02_arithmetic_operations.py`](./02_arithmetic_operations.py) | Easy ⭐ | `/` float division vs `//` floor division & `%` modulus |
-| 03 | Operator Precedence | [`03_operator_precedence.py`](./03_operator_precedence.py) | Easy | Precedence rules (BODMAS/PEMDAS) |
-| 04 | Augmented Assignment | [`04_augmented_assignment.py`](./04_augmented_assignment.py) | Easy | `+=`, `-=`, `*=`, `/=` shortcuts |
-| 05 | Math Functions | [`05_math_functions.py`](./05_math_functions.py) | Easy | Built-in `abs()`, `pow()`, `round()` |
-| 06 | Calculator | [`06_calculator.py`](./06_calculator.py) | Easy | Multi-operation numeric calculation |
-| 07 | Discount Calculator | [`07_discount.py`](./07_discount.py) | Easy | Price discount formula evaluation |
-| 08 | Profit/Loss | [`08_profit_loss.py`](./08_profit_loss.py) | Easy | Financial profit/loss percentage math |
-| 09 | Percentage | [`09_percentage.py`](./09_percentage.py) | Easy | Ratio percentage evaluation |
-| 10 | Power Calculator | [`10_power_calculator.py`](./10_power_calculator.py) | Easy | Exponentiation operator `**` |
+Operators are symbols that perform operations on values and variables. Python
+provides six categories: arithmetic, comparison, logical, assignment, membership,
+and identity. Understanding operator precedence and short-circuit evaluation is
+essential for writing correct, predictable code.
 
 ---
 
-## 📝 Problem Details
+## What is it?
 
-### 01. Addition
-Add two numbers and print the sum.
+An operator takes one or more operands and produces a result. Python operators
+are built into the language — no import required — and work across all core types
+(`int`, `float`, `str`, `bool`, `list`, etc.) with type-specific behavior.
+
+---
+
+## Why do we use it?
+
+- Perform calculations, comparisons, and logical decisions in a single expression.
+- Assignment operators (`+=`, `*=`, etc.) make update operations concise.
+- `in` and `is` answer the two most common runtime questions: membership and identity.
+
+---
+
+## Syntax
 
 ```python
-a = 15
-b = 25
-sum_result = a + b
+# Arithmetic
++   -   *   /   //   %   **
 
-print(f"The sum of {a} and {b} is {sum_result}.")
+# Comparison  (always return bool)
+==  !=  >   <   >=  <=
+
+# Logical
+and   or   not
+
+# Assignment (augmented)
+=   +=  -=  *=  /=  //=  %=  **=
+
+# Membership
+in    not in
+
+# Identity
+is    is not
 ```
 
 ---
 
-### 02. Arithmetic Operations
-Demonstrate all fundamental arithmetic operations on two numbers.
+## Parameters
 
-```python
-a = 17
-b = 5
+### Arithmetic Operators
 
-print("Addition:", a + b)
-print("Subtraction:", a - b)
-print("Multiplication:", a * b)
-print("Float Division:", a / b)
-print("Floor Division:", a // b)
-print("Modulus (Remainder):", a % b)
-print("Exponentiation:", a ** b)
-```
+| Operator | Name | Example | Result |
+|---|---|---|---|
+| `+` | Addition | `10 + 3` | `13` |
+| `-` | Subtraction | `10 - 3` | `7` |
+| `*` | Multiplication | `10 * 3` | `30` |
+| `/` | Division | `10 / 3` | `3.333...` (float) |
+| `//` | Floor Division | `10 // 3` | `3` (int) |
+| `%` | Modulus | `10 % 3` | `1` |
+| `**` | Exponentiation | `2 ** 10` | `1024` |
+
+### Comparison Operators
+
+| Operator | Meaning |
+|---|---|
+| `==` | Equal in value |
+| `!=` | Not equal |
+| `>` / `<` | Greater / Less than |
+| `>=` / `<=` | Greater or equal / Less or equal |
+
+### Logical Operators
+
+| Operator | Behaviour |
+|---|---|
+| `and` | `True` if both operands are truthy |
+| `or` | `True` if at least one operand is truthy |
+| `not` | Inverts the boolean value |
+
+### Membership & Identity
+
+| Operator | Use |
+|---|---|
+| `in` / `not in` | Check if item exists in a sequence |
+| `is` / `is not` | Check if two variables point to the same object |
 
 ---
 
-### 03. Operator Precedence
-Evaluate expressions combining addition, multiplication, and parentheses to demonstrate order of operations.
+## Return Value
 
-```python
-result1 = 10 + 5 * 2
-result2 = (10 + 5) * 2
-
-print("Without parentheses (10 + 5 * 2):", result1)  # 20
-print("With parentheses ((10 + 5) * 2):", result2)     # 30
-```
+| Category | Returns |
+|---|---|
+| Arithmetic | `int` or `float` (division `/` always returns `float`) |
+| Comparison | `bool` |
+| Logical | The actual operand value (truthy/falsy), not always `bool` |
+| Assignment | No return value (statement) |
+| Membership | `bool` |
+| Identity | `bool` |
 
 ---
 
-### 04. Augmented Assignment
-In-place variable modifications using shorthand operators (`+=`, `-=`, `*=`, `/=`).
+## Example
 
 ```python
+# Arithmetic
+print(10 // 3)          # 3      (floor division)
+print(10 % 3)           # 1      (remainder)
+print(2 ** 8)           # 256    (exponentiation)
+
+# Comparison
+print(10 > 5)           # True
+print(10 == 10.0)       # True   (value equality)
+
+# Logical (short-circuit)
+print(True and False)   # False
+print(False or True)    # True
+print(not True)         # False
+
+# Augmented assignment
 x = 10
-x += 5   # 15
-x *= 2   # 30
-x -= 4   # 26
-x /= 2   # 13.0
+x += 5
+print(x)                # 15
 
-print("Final value of x:", x)
+# Membership
+fruits = ["apple", "banana"]
+print("apple" in fruits)   # True
+
+# Identity
+a = [1, 2]
+b = a
+print(a is b)              # True  (same object)
+print(a is [1, 2])         # False (different object, equal value)
 ```
 
 ---
 
-### 05. Math Functions
-Utilize built-in mathematical helper functions `abs()`, `pow()`, and `round()`.
+## Output
+
+```
+3
+1
+256
+True
+True
+False
+True
+False
+15
+True
+True
+False
+```
+
+---
+
+## Key Points
+
+- `/` always returns a `float`; use `//` for integer division.
+- `==` checks **value equality**; `is` checks **object identity** (memory address).
+- `and` / `or` **short-circuit**: `and` stops at the first falsy value, `or` stops at the first truthy value.
+- `and` / `or` return the **deciding operand**, not necessarily `True`/`False`: `0 or "default"` → `"default"`.
+- Operator precedence (high → low): `**` → unary `- +` → `* / // %` → `+ -` → comparisons → `not` → `and` → `or`.
+- `x < y < z` is valid Python — it chains comparisons.
+- Augmented assignment (`+=`) modifies the variable in place for mutable types but creates a new object for immutables like `int` and `str`.
+
+---
+
+## Common Mistakes
 
 ```python
-num = -15.75
-print("Absolute Value:", abs(num))
-print("Power (2^5):", pow(2, 5))
-print("Rounded:", round(num, 1))
+# Mistake 1 — using = instead of ==
+if x = 10:            # SyntaxError
+if x == 10:           # Correct
+
+# Mistake 2 — is vs ==
+a = 256
+b = 256
+a is b                # True — CPython caches small ints (-5 to 256)
+a = 1000
+b = 1000
+a is b                # False (may vary) — don't use is for value comparison
+
+# Mistake 3 — integer vs float division
+print(7 / 2)          # 3.5 (not 3)
+print(7 // 2)         # 3
+
+# Mistake 4 — misreading short-circuit return
+print(0 or "hello")   # 'hello' — not True
+print(1 and "hello")  # 'hello' — not True
+
+# Mistake 5 — precedence surprise
+print(2 + 3 * 4)      # 14, not 20 — * binds tighter than +
 ```
 
 ---
 
-### 06. Calculator
-Compute basic math metrics between two input numbers.
+## Interview Notes
+
+- **When to use `//` over `/`:** Anytime you need an integer result — array indexing, binary search midpoints, etc.
+- **`%` (modulus) patterns:** Even/odd check `n % 2 == 0`, cyclic wrap `i % n`, last digit `n % 10`.
+- **`is` rule:** Only use `is` to check `None`, `True`, `False` — never for integers or strings.
+- **Short-circuit idiom:** `value = user_input or "default"` is idiomatic Python for defaults.
+- **Complexity:** All basic operators are O(1) except `**` which is O(log exponent) for large integers.
+
+---
+
+## Practice Problems
+
+```
+01_addition.py
+02_arithmetic_operations.py
+03_operator_precedence.py
+04_augmented_assignment.py
+05_math_functions.py
+06_calculator.py
+07_discount.py
+08_profit_loss.py
+09_percentage.py
+10_power_calculator.py
+```
+
+---
+
+## Quick Revision
 
 ```python
-num1 = float(input("Enter first number: "))
-num2 = float(input("Enter second number: "))
+# Arithmetic
+10 + 3    # 13     10 - 3    # 7
+10 * 3    # 30     10 / 3    # 3.333 (float)
+10 // 3   # 3      10 % 3    # 1
+2 ** 8    # 256
 
-print(f"Sum: {num1 + num2}")
-print(f"Difference: {num1 - num2}")
-print(f"Product: {num1 * num2}")
-print(f"Quotient: {num1 / num2}")
+# Augmented
+x = 5; x += 3   # x = 8
+
+# Comparison → bool
+10 > 5    # True    10 == 10.0  # True
+
+# Logical (short-circuit)
+True and False   # False
+False or True    # True
+not True         # False
+
+# Membership / Identity
+"a" in "abc"     # True
+x is None        # use is only for None/True/False
 ```
-
----
-
-### 07. Discount Calculator
-Calculate final selling price after applying a percentage discount to an original price.
-
-```python
-original_price = 1200
-discount_percent = 15
-
-discount_amount = (original_price * discount_percent) / 100
-final_price = original_price - discount_amount
-
-print(f"Discount: ${discount_amount}")
-print(f"Final Price: ${final_price}")
-```
-
----
-
-### 08. Profit/Loss
-Determine profit or loss amount and percentage from Cost Price (CP) and Selling Price (SP).
-
-```python
-cost_price = 500
-selling_price = 650
-
-profit = selling_price - cost_price
-profit_percentage = (profit / cost_price) * 100
-
-print(f"Profit: ${profit} ({profit_percentage}%)")
-```
-
----
-
-### 09. Percentage
-Find what percentage a part is of a total.
-
-```python
-part = 45
-total = 60
-
-percentage = (part / total) * 100
-print(f"{part} is {percentage}% of {total}.")
-```
-
----
-
-### 10. Power Calculator
-Calculate $base^{exponent}$ using the `**` operator.
-
-```python
-base = int(input("Enter base: "))
-exponent = int(input("Enter exponent: "))
-
-result = base ** exponent
-print(f"{base}^{exponent} = {result}")
-```
-
----
-
-## ▶️ How to Run
-
-```bash
-python 01_addition.py
-```
-
----
-
-## 🎯 Key Takeaways
-
-- `/` **always yields a `float`** in Python 3, even if the division is exact (e.g. `4 / 2 = 2.0`).
-- `//` (floor division) truncates the decimal portion toward negative infinity.
-- `%` (modulus) extracts the remainder after division.
-- Parentheses `()` override default operator precedence.
-
----
-
-*Author: Karthik Bhandarkar*
