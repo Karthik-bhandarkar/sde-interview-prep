@@ -33,8 +33,7 @@ numbers = [10, 45, 7, 89, 23]
 # Write your code here
 largest = numbers[0]
 
-for i in numbers:
-    if i > largest:
-        largest = i
-
+for n in numbers:
+    if n > largest:
+        largest = n
 print(largest)
