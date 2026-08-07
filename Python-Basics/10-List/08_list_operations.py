@@ -76,6 +76,6 @@ marks.extend([95, 100])
 print("Final List:", marks)
 
 #output 
-Index of 60: 2
+"""Index of 60: 2
 Count of 78: 1
-Final List: [90, 78, 60, 56, 45, 95, 100]
+Final List: [90, 78, 60, 56, 45, 95, 100]"""
